@@ -4,7 +4,7 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
-from flask_pymongo import PyMongo
+# from flask_pymongo import PyMongo
 from flask import Flask, jsonify,request, render_template
 
 # Flask setup
