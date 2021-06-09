@@ -10,6 +10,10 @@ from flask import Flask, jsonify,request, render_template
 # Flask setup
 app = Flask(__name__)
 
+@app.route("/")
+def home():
+
+   return "HelloWorld"
 
 if __name__ == "__main__":
     app.run(debug=True)
