@@ -18,7 +18,7 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 # Save reference to the table
-Passenger = Base.classes.passenger
+Spotify = Base.classes.spotify
 
 
 # Flask setup
