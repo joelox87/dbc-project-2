@@ -7,6 +7,20 @@ from sqlalchemy import create_engine, func
 # from flask_pymongo import PyMongo
 from flask import Flask, jsonify,request, render_template
 
+#################################################
+# Database Setup
+#################################################
+engine = create_engine("sqlite:///spotify.sqlite")
+
+# reflect an existing database into a new model
+Base = automap_base()
+# reflect the tables
+Base.prepare(engine, reflect=True)
+
+# Save reference to the table
+Passenger = Base.classes.passenger
+
+
 # Flask setup
 app = Flask(__name__)
 
