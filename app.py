@@ -13,11 +13,10 @@ app = Flask(__name__)
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("sqlite:///spotify.sqlite")
 
 
 from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///spotify.sqlite"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///spotify_genres.sqlite"
 # Remove tracking modifications
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -26,7 +25,7 @@ db = SQLAlchemy(app)
 db.reflect()
 
 class Spotify(db.Model):
-    __tablename__ = 'spotify'
+    __tablename__ = 'sortedgenres'
 
 
 @app.route("/")
@@ -34,20 +33,36 @@ def home():
     
     return render_template("index_joel.html")
 
-@app.route("/spotify/data")
+@app.route("/data")
 def data():
+    #Index(['mode', 'genres', 'acousticness', 'danceability', 'duration_ms',
+       #'energy', 'instrumentalness', 'liveness', 'loudness', 'speechiness',
+      # 'tempo', 'valence', 'popularity', 'key'],
     spotify = db.session.query(
-        Spotify.id,
-        Spotify.Artist,
-        Spotify.Genre,
-        Spotify.Followers, 
+        Genres.genres,
+        Genres.acousticness,
+        Genres.danceability,
+        Genres.duration_ms, 
+        Genres.energy,
+        Genres.instrumentalness,
+        Genres.liveness,
+        Genres.loudness,
+        Genres.tempo,
+        Genres.popularity
     ).all()
     
     spotify_dataJson = [{
-        'id': data[0],
-        'Artist': data[1],
-        'Genre': data[2],
-        'Followers': data[3],
+        'genres': data[0],
+        'acousticness': data[1],
+        'danceability': data[2],
+        'duration_ms': data[3],
+        'energy' : data[4],
+        'instrumentalness' : data[5],
+        'liveness' : data[6],
+        'loudness' : data[7],
+        'tempo' : data[8],
+        'popularity' : data[9]
+
     } for data in spotify]
 
     print(spotify_dataJson[1:10])
