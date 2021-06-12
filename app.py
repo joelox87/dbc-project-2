@@ -34,5 +34,23 @@ def home():
     
     return render_template("index_joel.html")
 
+@app.route("/spotify/data")
+def data():
+    spotify = db.session.query(
+        Spotify.id,
+        Spotify.Artist,
+        Spotify.Genre,
+        Spotify.Followers, 
+    ).all()
+    
+    spotify_dataJson = [{
+        'id': data[0],
+        'Artist': data[1],
+        'Genre': data[2],
+        'Followers': data[3],
+    } for data in spotify]
+
+    print(spotify_dataJson[1:10])
+
 if __name__ == "__main__":
     app.run(debug=True)
