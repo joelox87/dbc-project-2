@@ -12,6 +12,19 @@
     <link rel="stylesheet" href="css/styles.css" media="screen">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+    <script src="../artists_data/app.js"></script>
+
+    <script src="../artists_data/config.js"></script>
   </head>
 
   <body>
@@ -33,6 +46,8 @@
         <h3>Insert H3 text here if needed.<br>
          <a href="https://www.spotify.com">Spotify Website</a>
          <br>
+         <h1 id="title">Top 10 artists in the World</h1>
+         <div id="map"></div> 
          <br>
          Insert Paragraph here if needed.
          <br>
