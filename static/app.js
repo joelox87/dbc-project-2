@@ -1,11 +1,22 @@
 function init() {
-        d3.json('./data').then(data => {
-            console.log(data)
+        d3.json('/data').then(response => {
+            console.log(response)
+            var x = reponse.map(row => row.tempo)
+            var y = reponse.map(row => row.danceability)
+            var trace1 = {
+                x: x,
+                y: y,
+                mode: 'markers',
+                type: 'scatter'
+            };
+            var data = [trace1];
+            Plotly.newPlot('scatter', data);
         });
-    // Create a map object
+    
+        // Create a map object
     var myMap = L.map("map", {
         center: [37.09, -95.71],
-        zoom: 5
+        zoom: 12
     });
 
     // Add a tile layer
