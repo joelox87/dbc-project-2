@@ -24,7 +24,7 @@ db = SQLAlchemy(app)
 #reflection to get the table meta
 db.reflect()
 
-class Spotify(db.Model):
+class Genres(db.Model):
     __tablename__ = 'sortedgenres'
 
 
@@ -66,6 +66,6 @@ def data():
     } for data in spotify]
 
     print(spotify_dataJson[1:10])
-
+    return jsonify(spotify_dataJson)
 if __name__ == "__main__":
     app.run(debug=True)

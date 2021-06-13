@@ -1,4 +1,7 @@
 function init() {
+        d3.json('./data').then(data => {
+            console.log(data)
+        });
     // Create a map object
     var myMap = L.map("map", {
         center: [37.09, -95.71],
