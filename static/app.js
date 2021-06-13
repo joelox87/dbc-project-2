@@ -1,8 +1,8 @@
 function init() {
-        d3.json('/data').then(response => {
+        d3.json('./data').then(response => {
             console.log(response)
-            var x = reponse.map(row => row.tempo)
-            var y = reponse.map(row => row.danceability)
+            var x = response.map(row => row.tempo)
+            var y = response.map(row => row.danceability)
             var trace1 = {
                 x: x,
                 y: y,
@@ -16,7 +16,7 @@ function init() {
         // Create a map object
     var myMap = L.map("map", {
         center: [37.09, -95.71],
-        zoom: 12
+        zoom: 5
     });
 
     // Add a tile layer
