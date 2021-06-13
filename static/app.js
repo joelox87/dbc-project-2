@@ -1,5 +1,5 @@
 function init() {
-        d3.json('./data').then(response => {
+        d3.json('/data').then(response => {
             console.log(response)
             var x = response.map(row => row.tempo)
             var y = response.map(row => row.danceability)
