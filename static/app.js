@@ -12,7 +12,28 @@ function init() {
             var data = [trace1];
             Plotly.newPlot('scatter', data);
         });
-    
+        
+        d3.json('./data').then(response => {
+            console.log(response)
+            var trace2 = {
+            y: response.map(row => row.acousticness),
+            name: "acousticness",
+            type: "box",
+            boxpoints: "all"
+          };
+          
+          var data = [trace2];
+          
+          var layout = {
+            title: "accousticness levels by genres",
+            yaxis: { title: "accousticness levels"}
+          };
+          
+          // Plot the chart to a div tag with id "plot"
+          Plotly.newPlot("boxplot1", data, layout);
+        });
+
+
         // Create a map object
     var myMap = L.map("map", {
         center: [37.09, -95.71],
