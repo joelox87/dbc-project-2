@@ -7,7 +7,7 @@ function init() {
                 x: x,
                 y: y,
                 mode: 'markers',
-                type: 'scatter'
+                type: 'scatter',
             };
             var data = [trace1];
             Plotly.newPlot('scatter', data);
