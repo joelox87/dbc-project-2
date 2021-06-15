@@ -191,4 +191,4 @@ function init() {
 
 
 
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener('DOMContentLoaded', init, drawBoxplot1);
