@@ -10,7 +10,38 @@ function init() {
                 type: 'scatter',
             };
             var data = [trace1];
-            Plotly.newPlot('scatter', data);
+            var layout = {
+                title: {
+                  text:'Tempo Vs Danceability Plot',
+                  font: {
+                    family: 'Courier New, monospace',
+                    size: 24
+                  },
+                  xref: 'paper',
+                  x: 0.05,
+                },
+                xaxis: {
+                  title: {
+                    text: 'Tempo',
+                    font: {
+                      family: 'Courier New, monospace',
+                      size: 18,
+                      color: '#7f7f7f'
+                    }
+                  },
+                },
+                yaxis: {
+                  title: {
+                    text: 'Danceability',
+                    font: {
+                      family: 'Courier New, monospace',
+                      size: 18,
+                      color: '#7f7f7f'
+                    }
+                  }
+                }
+              };
+            Plotly.newPlot('scatter', data, layout);
         });
         
         d3.json('./data').then(response => {
