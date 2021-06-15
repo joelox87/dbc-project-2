@@ -1,5 +1,20 @@
 function init() {
         d3.json('./data').then(response => {
+          var dataKeys = Object.keys(response[0])
+          var selector1 = d3.select("#selector1")
+            .selectAll('option')
+            .data(dataKeys)
+            .enter()
+            .append('option')
+            .text(d => d)
+            .attr('value', d => d)
+            .on('change', function() {
+              console.log('test')
+              var value = d3.select("#selector1").attr("value")
+              console.log(value)
+            })
+        });
+        d3.json('./data').then(response => {
             console.log(response)
             var x = response.map(row => row.tempo)
             var y = response.map(row => row.danceability)
@@ -7,10 +22,41 @@ function init() {
                 x: x,
                 y: y,
                 mode: 'markers',
-                type: 'scatter'
+                type: 'scatter',
             };
             var data = [trace1];
-            Plotly.newPlot('scatter', data);
+            var layout = {
+                title: {
+                  text:'Tempo Vs Danceability Plot',
+                  font: {
+                    family: 'Courier New, monospace',
+                    size: 24
+                  },
+                  xref: 'paper',
+                  x: 0.05,
+                },
+                xaxis: {
+                  title: {
+                    text: 'Tempo',
+                    font: {
+                      family: 'Courier New, monospace',
+                      size: 18,
+                      color: '#7f7f7f'
+                    }
+                  },
+                },
+                yaxis: {
+                  title: {
+                    text: 'Danceability',
+                    font: {
+                      family: 'Courier New, monospace',
+                      size: 18,
+                      color: '#7f7f7f'
+                    }
+                  }
+                }
+              };
+            Plotly.newPlot('scatter', data, layout);
         });
         
         d3.json('./data').then(response => {
@@ -35,29 +81,29 @@ function init() {
 
         d3.json('./data').then(response => {
             console.log(response)
-            var z = response.map(row => row.loudness),
             var trace3 = {
-            z: z,
+            y: response.map(row => row.loudness),
             name: "loudness",
             type: "box",
             boxpoints: "all"
           };
           
-          var data2 = [trace3];
-          var layout2 = {
+          var data = [trace3];
+          var layout = {
             title: "loudness levels by genres",
             yaxis: { title: "level of loudness"}
           };
           
           // Plot the chart to a div tag with id "plot"
-          Plotly.newPlot("boxplot2", data2, layout2);
+          Plotly.newPlot("boxplot2", data, layout);
         });
 
         
         // Create a map object
     var myMap = L.map("map", {
         center: [37.09, -95.71],
-        zoom: 5
+        zoom: 3
+      
     });
 
     // Add a tile layer
