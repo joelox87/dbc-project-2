@@ -29,7 +29,7 @@
 			document.querySelector('.vjs-poster').style.display = 'none';
 
 			request = new XMLHttpRequest
-			request.open('GET', 'https://gdata.youtube.com/feeds/api/videos/' + getVideoId(player.options()['src']) + '/related?alt=json&max-results=12', true);
+			request.open('GET', regId' + getVideoId(player.options()['src']) + '/related?alt=json&max-results=12', true);
 			request.send();
 
 			request.onload = function() 
@@ -46,12 +46,6 @@
 					var author = results[item].author[0].name.$t;
 					var views = results[item].yt$statistics.viewCount;
 					var link = results[item].link[0].href;
-
-					var image = document.createElement('div');
-					image.className = 'vjs-youtube-videowall-container-item';
-					image.innerHTML = '<a id="vjs-youtube-videowall-container-item-link-' + item + '" class="vjs-youtube-videowall-container-item-link" href="' + link + '" target="_blank" style="background: url(http://img.youtube.com/vi/' + getVideoId(link) + '/mqdefault.jpg) no-repeat; background-size: cover;"><div class="vjs-youtube-videowall-container-item-text"><div class="vjs-youtube-videowall-container-item-text-title">' + title + '</div><div class="vjs-youtube-videowall-container-item-text-meta">' + author + '<br>' + views + '</div></div></a>';
-
-					container.appendChild(image);
 
 					document.getElementById('vjs-youtube-videowall-container-item-link-' + item).onclick = function()
 					{
