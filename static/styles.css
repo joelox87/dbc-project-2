@@ -7,7 +7,7 @@ body {
   #map,
   body,
   html {
-    height: 100%;
+    height: 75%;
   }
   .hero {
     position: relative;
@@ -144,11 +144,26 @@ body {
   }
 
   #map {
-    width: 512px;
-    height: 512px;
+    width: 450px;
+    height: 450px;
     border: 1px solid #ccc;
+    text-align: center;
 }
 
 .leaflet-container {
     background: #fff;
 }
+
+
+
+
+#song {
+  align-items: right;
+  text-align: center;
+}
+.youtube {
+  width: 1550px;
+  height: 1550px;
+  text-align: right;
+}
+
