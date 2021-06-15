@@ -33,7 +33,27 @@ function init() {
           Plotly.newPlot("boxplot1", data, layout);
         });
 
+        d3.json('./data').then(response => {
+            console.log(response)
+            var z = response.map(row => row.loudness),
+            var trace3 = {
+            z: z,
+            name: "loudness",
+            type: "box",
+            boxpoints: "all"
+          };
+          
+          var data2 = [trace3];
+          var layout2 = {
+            title: "loudness levels by genres",
+            yaxis: { title: "level of loudness"}
+          };
+          
+          // Plot the chart to a div tag with id "plot"
+          Plotly.newPlot("boxplot2", data2, layout2);
+        });
 
+        
         // Create a map object
     var myMap = L.map("map", {
         center: [37.09, -95.71],
