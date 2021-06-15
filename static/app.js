@@ -1,5 +1,20 @@
 function init() {
         d3.json('./data').then(response => {
+          var dataKeys = Object.keys(response[0])
+          var selector1 = d3.select("#selector1")
+            .selectAll('option')
+            .data(dataKeys)
+            .enter()
+            .append('option')
+            .text(d => d)
+            .attr('value', d => d)
+            .on('change', function() {
+              console.log('test')
+              var value = d3.select("#selector1").attr("value")
+              console.log(value)
+            })
+        });
+        d3.json('./data').then(response => {
             console.log(response)
             var x = response.map(row => row.tempo)
             var y = response.map(row => row.danceability)
