@@ -36,7 +36,7 @@ function init() {
         d3.json('./data').then(response => {
             console.log(response)
             var trace3 = {
-            z: response.map(row => row.loudness),
+            y: response.map(row => row.loudness),
             name: "loudness",
             type: "box",
             boxpoints: "all"
