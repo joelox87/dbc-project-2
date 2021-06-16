@@ -1,7 +1,7 @@
 # dbc-project-2
 Project 2 Repository
 
-Description of Music Attributes
+Description of Musical Attributes
 
 * acousticness - Measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.
 
