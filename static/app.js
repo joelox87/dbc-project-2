@@ -13,7 +13,7 @@ function init() {
           selector1.on('change', function() {
               //console.log('test')
               var value = d3.select("#selector1").property("value")
-              //var y = data.map(row => row[value])
+              var y = data.map(row => row[value])
 
               //plotly.restyle()
               //console.log(value)
