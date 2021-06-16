@@ -2,16 +2,21 @@ function init() {
         d3.json('./data').then(response => {
           var dataKeys = Object.keys(response[0])
           var selector1 = d3.select("#selector1")
-            .selectAll('option')
+
+          selector1.selectAll('option')
             .data(dataKeys)
             .enter()
             .append('option')
             .text(d => d)
             .attr('value', d => d)
-            .on('change', function() {
-              console.log('test')
-              var value = d3.select("#selector1").attr("value")
-              console.log(value)
+            
+          selector1.on('change', function() {
+              //console.log('test')
+              var value = d3.select("#selector1").property("value")
+              //var y = data.map(row => row[value])
+
+              //plotly.restyle()
+              //console.log(value)
             })
         });
         d3.json('./data').then(response => {
